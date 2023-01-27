@@ -4,26 +4,26 @@ const sellerSchema = new mongoose.Schema({
     name: {
         type: String,
         unique: true,
-        required: [true, "Seller must have a name"],
+        required: [true, 'Seller must have a name'],
         trim: true,
     },
     email: {
         type: String,
         unique: true,
-        required: [true, "Seller must have an email"],
+        required: [true, 'Seller must have an email'],
         trim: true,
     },
     phoneNumber: {
         type: Number,
         unique: true,
-        required: [true, "Seller must have a phone Number"],
+        required: [true, 'Seller must have a phone Number'],
     },
     upiId: {
         // select: false,
         type: String,
         trim: true,
         unique: true,
-        required: [true, "Seller must have a Upi Id"],
+        required: [true, 'Seller must have a Upi Id'],
     },
     balance: {
         type: Number,
@@ -40,29 +40,42 @@ const sellerSchema = new mongoose.Schema({
         type: [{
             name: {
                 type: String,
-                required: [true, "An item must have a name"],
+                required: [true, 'An item must have a name'],
                 unique: true,
             },
             price: {
                 type: Number,
-                required: [true, "An item must have a price"],
+                required: [true, 'An item must have a price'],
             },
             images: {
                 type: [String],
             },
             content: {
                 type: String,
+            },
+            available: {
+                type: Boolean,
+                default: true,
             }
         }]
     },
+    password: {
+        type: String,
+        required: [true, 'Password is required'],
+        minLength: 8,
+    },
+    passwordConfirm: {
+        type: String,
+        required: [true, 'Confirm Password Required'],
+    },
     address: {
         type: String,
-        required: [true, "Seller must have an address"],
+        required: [true, 'Seller must have an address'],
     },
     location: {
         type: [Number],
     }
 });
-const Seller = mongoose.model("Seller", sellerSchema);
+const Seller = mongoose.model('Seller', sellerSchema);
 // Exporting the Seller Schema
 module.exports = Seller;

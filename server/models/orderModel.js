@@ -15,6 +15,9 @@ const orderSchema = new mongoose.Schema({
     status: {
         type: Number,
         default: -1,
+        // -1 : Order Places
+        //  0 : Order Cancelled
+        //  1 : Order Completed
         // required: [true, "Order must have a status"]
     },
     orderDetails: {
@@ -24,9 +27,6 @@ const orderSchema = new mongoose.Schema({
         }]
     },
     userToken: {
-        type: Number,
-    },
-    sellerToken: {
         type: Number,
     }
 })
